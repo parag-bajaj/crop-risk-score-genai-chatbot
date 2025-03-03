@@ -42,6 +42,7 @@ Default Behavior:
 """
 
 def generate_sql_with_explanation(user_query, extra_context=""):
+    print(user_query)
     prompt = f"""{metadata_context}
         User Query: "{user_query}"
         {extra_context}
@@ -61,7 +62,7 @@ def generate_sql_with_explanation(user_query, extra_context=""):
     
     model = genai.GenerativeModel('gemini-2.0-flash')
     response = model.generate_content(prompt)
-    
+    print(response)
     # Parse the response
     parts = response.text.split('\n')
     sql_query = ""
