@@ -5,7 +5,7 @@ import google.generativeai as genai
 import os
 
 app = Flask(__name__)
-
+app.secret_key=os.urandom(24)
 secret_key=os.getenv('GEMINI_KEY')
 psg_pswd=os.getenv('psg_pswd')
 psg_endpoint=os.getenv('psg_endpoint')
