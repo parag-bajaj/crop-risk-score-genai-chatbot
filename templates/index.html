@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Farm Risk Analysis GenAI Chatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-size: 14px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .info-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h4 class="text-center mb-3">Farm Risk Analysis GenAI Chatbot</h4>
+        
+        <div class="info-section">
+            <h6>Available Data:</h6>
+            <p>NDVI, soil moisture, rainfall, temperature, wind speed, humidity, soil pH.</p>
+            <p>Historical risk levels, risk scores, and crop-specific risks.</p>
+        </div>
+
+        <div class="info-section">
+            <h6>Example Queries:</h6>
+            <p>"Show me the top 5 highest risk areas based on risk score."</p>
+            <p>"Compare soil moisture and NDVI levels for different crops."</p>
+        </div>
+
+        <div class="info-section">
+            <h6>Query Tips:</h6>
+            <p>Be specific, mention thresholds, focus on crops, and include timeframes.</p>
+        </div>
+
+        <form action="{{ url_for('generate') }}" method="post">
+            <div class="form-group">
+                <label for="user_query">Enter your query:</label>
+                <textarea class="form-control" id="user_query" name="user_query" rows="3" required placeholder="Example: Show me the areas with high soil moisture and their risk scores..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate Analysis</button>
+        </form>
+    </div>
+</body>
+</html>

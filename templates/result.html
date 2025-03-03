@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Generation Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">Original Query</h2>
+            <p class="mb-4 text-gray-700">{{ user_query }}</p>
+
+            <h2 class="text-xl font-bold mb-4">Generated SQL</h2>
+            <pre class="bg-gray-100 p-4 rounded mb-4 overflow-x-auto">{{ sql_query }}</pre>
+
+            <h2 class="text-xl font-bold mb-4">SQL Explanation</h2>
+            <p class="mb-4 text-gray-700">{{ sql_explanation }}</p>
+
+            <h2 class="text-xl font-bold mb-4">Analysis Points</h2>
+            <p class="mb-4 text-gray-700">{{ analysis_points }}</p>
+
+            <form action="{{ url_for('refine') }}" method="post" class="mt-6">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Need modifications? Provide additional context:
+                    </label>
+                    <textarea name="feedback" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="3"></textarea>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button type="submit" name="action" value="modify" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Modify Query
+                    </button>
+                    <button type="submit" name="action" value="confirm" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Execute Query
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
